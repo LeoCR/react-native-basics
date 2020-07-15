@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {View,StyleSheet,Platform} from 'react-native';
 import Colors from "../constants/colors";
 import TitleText from "./TitleText"
 const Header=props=>{
@@ -14,9 +14,11 @@ const styles=StyleSheet.create({
         width:"100%",
         height:90,
         paddingTop:36,
-        backgroundColor:Colors.primary,
+        backgroundColor:Platform.OS==='android'?Colors.primary:Colors.accent,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        borderBottomColor:Platform.OS==='ios'?'#000000':'#ccc',
+        borderBottomWidth:2
     }
 });
 export default Header;
